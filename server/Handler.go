@@ -3,6 +3,7 @@ package server
 import (
 	"io"
 	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/qday-wallet/bridge-analysis/common/driver"
@@ -11,6 +12,10 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/sunjiangjun/xlog"
 	"github.com/tidwall/gjson"
+)
+
+const (
+	TimeFormat = "2006-01-02"
 )
 
 type Handler struct {
@@ -39,8 +44,18 @@ func (h *Handler) Monitor(ctx *gin.Context) {
 		h.Error(ctx, "", ctx.Request.RequestURI, err.Error())
 		return
 	}
-	start := gjson.ParseBytes(b).Get("startTime").Time()
-	end := gjson.ParseBytes(b).Get("endTime").Time()
+	startTime := gjson.ParseBytes(b).Get("startTime").String()
+	start, err := time.ParseInLocation(TimeFormat, startTime, time.UTC)
+	if err != nil {
+		h.Error(ctx, "", ctx.Request.RequestURI, err.Error())
+		return
+	}
+	endTime := gjson.ParseBytes(b).Get("endTime").String()
+	end, err := time.ParseInLocation(TimeFormat, endTime, time.UTC)
+	if err != nil {
+		h.Error(ctx, "", ctx.Request.RequestURI, err.Error())
+		return
+	}
 	array := gjson.ParseBytes(b).Get("status").Array()
 	list := make([]int64, 0, 2)
 	for _, v := range array {
@@ -85,8 +100,18 @@ func (h *Handler) Income(ctx *gin.Context) {
 		h.Error(ctx, "", ctx.Request.RequestURI, err.Error())
 		return
 	}
-	start := gjson.ParseBytes(b).Get("startTime").Time()
-	end := gjson.ParseBytes(b).Get("endTime").Time()
+	startTime := gjson.ParseBytes(b).Get("startTime").String()
+	start, err := time.ParseInLocation(TimeFormat, startTime, time.UTC)
+	if err != nil {
+		h.Error(ctx, "", ctx.Request.RequestURI, err.Error())
+		return
+	}
+	endTime := gjson.ParseBytes(b).Get("endTime").String()
+	end, err := time.ParseInLocation(TimeFormat, endTime, time.UTC)
+	if err != nil {
+		h.Error(ctx, "", ctx.Request.RequestURI, err.Error())
+		return
+	}
 
 	points, err := h.db.AssetIncome(start, end)
 	if err != nil {
@@ -103,8 +128,18 @@ func (h *Handler) Pay(ctx *gin.Context) {
 		h.Error(ctx, "", ctx.Request.RequestURI, err.Error())
 		return
 	}
-	start := gjson.ParseBytes(b).Get("startTime").Time()
-	end := gjson.ParseBytes(b).Get("endTime").Time()
+	startTime := gjson.ParseBytes(b).Get("startTime").String()
+	start, err := time.ParseInLocation(TimeFormat, startTime, time.UTC)
+	if err != nil {
+		h.Error(ctx, "", ctx.Request.RequestURI, err.Error())
+		return
+	}
+	endTime := gjson.ParseBytes(b).Get("endTime").String()
+	end, err := time.ParseInLocation(TimeFormat, endTime, time.UTC)
+	if err != nil {
+		h.Error(ctx, "", ctx.Request.RequestURI, err.Error())
+		return
+	}
 
 	points, err := h.db.AssetPay(start, end)
 	if err != nil {

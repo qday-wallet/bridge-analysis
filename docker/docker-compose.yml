@@ -1,0 +1,16 @@
+version: "3.5"
+networks:
+  default:
+    name: bridge-analysis
+services:
+  analysis:
+    container_name: bridge-analysis
+    image: ghcr.io/qday-wallet/bridge-analysis:0.1.0
+    restart: always
+    volumes:
+      - ./config.json:/app/config.json
+      - ./log:/app/log
+    command:
+      - /app/bridge-analysis
+      - --config
+      - /app/config.json

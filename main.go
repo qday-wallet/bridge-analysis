@@ -40,8 +40,8 @@ func main() {
 	srv := server.NewHandler(cfg.DB, LOG)
 	root.POST("/monitor", srv.Monitor)
 	root.POST("/query", srv.QueryTxs)
-	root.POST("/analysis/income", srv.QueryTxs)
-	root.POST("/analysis/pay", srv.QueryTxs)
+	root.POST("/analysis/income", srv.Income)
+	root.POST("/analysis/pay", srv.Pay)
 
 	err := e.Run(fmt.Sprintf(":%v", cfg.Port))
 	if err != nil {

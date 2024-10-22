@@ -1,0 +1,15 @@
+{
+  "Port": 9092,
+  "DB": {
+    "Addr": "190.92.213.101",
+    "Port": 5432,
+    "User": "postgres",
+    "Password": "123456789",
+    "DbName": "postgres"
+  },
+  "Log": {
+    "Path": "./log/relay",
+    "Delay": 2
+  },
+  "Root": "./bridge"
+}

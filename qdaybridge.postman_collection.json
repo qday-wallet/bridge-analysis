@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "49ed1c1c-9cde-47b9-90d8-084e1eee8496",
+		"name": "qdaybridge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "query",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\":\"0x30ef9dF39C10C57a478f4c6733c3f210CE17C662\",\n    \"pageSize\":5,\n    \"pageNumber\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9092/bridge/query",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"bridge",
+						"query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "monitor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startTime\": \"2024-10-10\",\n    \"endTime\": \"2024-10-25\",\n    \"status\": [\n        9,\n        100\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9092/bridge/monitor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"bridge",
+						"monitor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "analysis/income",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startTime\": \"2024-10-10\",\n    \"endTime\": \"2024-10-25\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9092/bridge/analysis/income",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"bridge",
+						"analysis",
+						"income"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "analysis/pay",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startTime\": \"2024-10-10\",\n    \"endTime\": \"2024-10-25\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9092/bridge/analysis/pay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"bridge",
+						"analysis",
+						"pay"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
