@@ -36,7 +36,6 @@ const (
 	VoteSuccess       = 5
 	MintSuccess       = 6
 	MintFail          = 7
-	TxTransferSuccess = 8
 	Locking           = 9
 	WithdrawFail      = 10
 )

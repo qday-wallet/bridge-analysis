@@ -1,6 +1,7 @@
 package server
 
 import (
+	"fmt"
 	"io"
 	"strings"
 	"time"
@@ -56,16 +57,41 @@ func (h *Handler) Monitor(ctx *gin.Context) {
 		h.Error(ctx, "", ctx.Request.RequestURI, err.Error())
 		return
 	}
-	array := gjson.ParseBytes(b).Get("status").Array()
-	list := make([]int64, 0, 2)
-	for _, v := range array {
-		list = append(list, v.Int())
+	end = end.Add(-60 * time.Minute)
+	if end.Before(start) {
+		h.Error(ctx, "", ctx.Request.RequestURI, fmt.Errorf("end time is before start time").Error())
+		return
 	}
+	//array := gjson.ParseBytes(b).Get("status").Array()
+	//list := make([]int64, 0, 2)
+	//for _, v := range array {
+	//	list = append(list, v.Int())
+	//}
 
-	txs, err := h.db.QueryTxs(start, end, list)
+	txs, err := h.db.QueryTxs(start, end, []int64{4, 5})
 	if err != nil {
 		h.Error(ctx, "", ctx.Request.RequestURI, err.Error())
 		return
+	}
+
+	r := make([]*db.Tx, 0, len(txs))
+	for _, tx := range txs {
+		//omit success tx
+		if strings.Contains(tx.Status, "100") || strings.Contains(tx.Status, "9") {
+			continue
+		}
+
+		if strings.Contains(tx.Status, "5") {
+			// 投票成功但可能解冻失败
+			tx.Status = "7"
+		} else if strings.Contains(tx.Status, "4") {
+			//在预定时间内未完成投票
+			tx.Status = "4"
+		} else {
+			// 2,3 初始化状态，非异常情况
+			continue
+		}
+		r = append(r, tx)
 	}
 
 	h.Success(ctx, string(b), txs, ctx.Request.RequestURI)
