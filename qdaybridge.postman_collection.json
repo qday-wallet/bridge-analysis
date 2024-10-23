@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"startTime\": \"2024-10-10\",\n    \"endTime\": \"2024-10-25\",\n    \"status\": [\n        9,\n        100\n    ]\n}",
+					"raw": "{\n    \"startTime\": \"2024-10-10 01:00:00\",\n    \"endTime\": \"2024-10-25 01:00:00\",\n    \"status\": [\n        9,\n        100\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -70,7 +70,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"startTime\": \"2024-10-10\",\n    \"endTime\": \"2024-10-25\"\n}",
+					"raw": "{\n    \"startTime\": \"2024-10-10 01:00:00\",\n    \"endTime\": \"2024-10-25 01:00:00\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,7 +100,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"startTime\": \"2024-10-10\",\n    \"endTime\": \"2024-10-25\"\n}",
+					"raw": "{\n    \"startTime\": \"2024-10-10 01:00:00\",\n    \"endTime\": \"2024-10-25 01:00:00\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
