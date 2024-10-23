@@ -7,6 +7,8 @@ services:
     container_name: bridge-analysis
     image: ghcr.io/qday-wallet/bridge-analysis:0.1.0
     restart: always
+    ports:
+      - 9092:9092
     volumes:
       - ./config.json:/app/config.json
       - ./log:/app/log
