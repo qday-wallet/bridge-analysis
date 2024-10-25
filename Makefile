@@ -5,7 +5,7 @@ DOCKER_IMAGE := $(NAMESPACE)/$(PROJECT)
 COMMIT_HASH := $(shell git rev-parse --short=7 HEAD)
 DATE=$(shell date +%Y%m%d-%H%M%S)
 ## DOCKER_TAG := ${DATE}-$(COMMIT_HASH)
-DOCKER_TAG := 0.1.0
+DOCKER_TAG := 0.1.2
 MODULES := $(wildcard api/*)
 SYSTEM := $(shell uname -s)
 

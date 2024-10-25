@@ -68,7 +68,7 @@ func (h *Handler) Monitor(ctx *gin.Context) {
 	//	list = append(list, v.Int())
 	//}
 
-	txs, err := h.db.QueryTxs(start, end, []int64{4, 5})
+	txs, err := h.db.QueryTxs(start, end, []int64{4, 7})
 	if err != nil {
 		h.Error(ctx, "", ctx.Request.RequestURI, err.Error())
 		return
@@ -81,7 +81,7 @@ func (h *Handler) Monitor(ctx *gin.Context) {
 			continue
 		}
 
-		if strings.Contains(tx.Status, "5") {
+		if strings.Contains(tx.Status, "7") {
 			// 投票成功但可能解冻失败
 			tx.Status = "7"
 		} else if strings.Contains(tx.Status, "4") {
