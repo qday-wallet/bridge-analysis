@@ -94,7 +94,7 @@ func (h *Handler) Monitor(ctx *gin.Context) {
 		r = append(r, tx)
 	}
 
-	h.Success(ctx, string(b), txs, ctx.Request.RequestURI)
+	h.Success(ctx, string(b), r, ctx.Request.RequestURI)
 }
 
 func (h *Handler) QueryTxs(ctx *gin.Context) {
