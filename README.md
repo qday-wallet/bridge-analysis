@@ -9,7 +9,7 @@ QDayBridge 的组件之一
   下载必要的配置文件和模版
 
      ```
-     wget -O docker.zip https://github.com/qday-wallet/bridge-relay/releases/download/1.0.0/docker.zip && unzip docker.zip
+     wget -O docker.zip https://github.com/qday-wallet/bridge-analysis/releases/download/release-0.1.0/docker.zip && unzip docker.zip
 
      ```
 - Update config
