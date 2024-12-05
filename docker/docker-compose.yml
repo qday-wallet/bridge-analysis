@@ -5,7 +5,7 @@ networks:
 services:
   analysis:
     container_name: bridge-analysis
-    image: ghcr.io/qday-wallet/bridge-analysis:0.1.0
+    image: ghcr.io/qday-wallet/bridge-analysis:0.1.4
     restart: always
     ports:
       - 9092:9092
